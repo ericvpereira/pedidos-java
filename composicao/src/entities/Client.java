@@ -1,16 +1,19 @@
 package entities;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Client {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     private String name;
     private String email;
-    private LocalDate birthDate;
+    private Date birthDate;
     
     public Client() {
     }
 
-    public Client(String name, String email, LocalDate birthDate) {
+    public Client(String name, String email, Date birthDate) {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
@@ -32,12 +35,17 @@ public class Client {
         this.email = email;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + sdf.format(birthDate) + ") - " + email;
     }
 
 }
